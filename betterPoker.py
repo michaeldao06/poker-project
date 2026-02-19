@@ -268,7 +268,7 @@ class Game():
 
 poker = Game([], "", "Pre-Flop")
 
-'''
+
 poker.player.dealCards(deck)
 poker.dealer.dealCards(deck)
 poker.currentRiver.dealFlop(deck)
@@ -278,10 +278,8 @@ poker.currentRiver.printCards()
 for i in range(2):
     poker.currentRiver.nextCard(deck)
 poker.checkPlayer()
-'''
-poker.player.set_cards(['A(heart)', 'K(heart)'])
-poker.currentRiver.set_cards(['Q(heart)', '7(heart)', 'T(heart)', '2(club)', '3(diamond)'])
-poker.checkPlayer()
+
+
 
 
 
