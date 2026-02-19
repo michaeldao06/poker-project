@@ -16,6 +16,7 @@ deck = ['2(heart)', '3(heart)', '4(heart)', '5(heart)', '6(heart)',
          'A(club)']
     
 
+
 def shuffleDeck(deck):
     random.shuffle(deck)
     
@@ -216,28 +217,22 @@ class Game():
         return False
     
     def checkRoyalFlush(self):
-         cards = self.currentRiver.get_cards() + self.player.get_cards()
+        cards = self.currentRiver.get_cards() + self.player.get_cards()
 
         # group unique ranks by suit
-         by_suit = {'heart': set(), 'diamond': set(), 'spade': set(), 'club': set()}
-         for c in cards:
+        by_suit = {'heart': set(), 'diamond': set(), 'spade': set(), 'club': set()}
+        for c in cards:
             by_suit[self._suit(c)].add(self._rank(c))
-
-         royal = {10,11,12,13,14}
+        
+        royal = {10,11,12,13,14}
+            
 
         # check straight inside each suit with >=5 cards
-         for suit, ranks in by_suit.items():
-                 if royal.issubset(ranks):
-                          
-                          return True
-         return False
-                 
-                 
-                  i
-                     
-                     
-                
-            
+        for suit, ranks in by_suit.items():
+            if royal.issubset(ranks):
+                return True
+        return False
+        
 
         
 
@@ -258,12 +253,14 @@ class Game():
             print("You have a full house")
         if self.checkFlush() == True:
             print("You have a flush")
-        ''''
         if self.checkStraight() == True:
             print("You have a straight")
-        '''
-        if self.checkStraightFlush() == True:
+        if self.checkStraightFlush() == True and self.checkRoyalFlush() == False:
             print("You have a straight flush")
+        elif self.checkRoyalFlush():
+            print("You have a Royal Flush")
+
+        
         
     
     
@@ -271,6 +268,7 @@ class Game():
 
 poker = Game([], "", "Pre-Flop")
 
+'''
 poker.player.dealCards(deck)
 poker.dealer.dealCards(deck)
 poker.currentRiver.dealFlop(deck)
@@ -280,6 +278,11 @@ poker.currentRiver.printCards()
 for i in range(2):
     poker.currentRiver.nextCard(deck)
 poker.checkPlayer()
+'''
+poker.player.set_cards(['A(heart)', 'K(heart)'])
+poker.currentRiver.set_cards(['Q(heart)', '7(heart)', 'T(heart)', '2(club)', '3(diamond)'])
+poker.checkPlayer()
+
 
 
 
