@@ -16,7 +16,6 @@ deck = ['2(heart)', '3(heart)', '4(heart)', '5(heart)', '6(heart)',
          'A(club)']
     
 
-
 def shuffleDeck(deck):
     random.shuffle(deck)
     
@@ -217,23 +216,28 @@ class Game():
         return False
     
     def checkRoyalFlush(self):
-        cards = self.currentRiver.get_cards() + self.player.get_cards()
+         cards = self.currentRiver.get_cards() + self.player.get_cards()
 
         # group unique ranks by suit
-        by_suit = {'heart': set(), 'diamond': set(), 'spade': set(), 'club': set()}
-        for c in cards:
+         by_suit = {'heart': set(), 'diamond': set(), 'spade': set(), 'club': set()}
+         for c in cards:
             by_suit[self._suit(c)].add(self._rank(c))
-            print
+
+         royal = {10,11,12,13,14}
 
         # check straight inside each suit with >=5 cards
-        for suit, ranks in by_suit.items():
-            if len(ranks) < 5:
-                continue
-            uniq = sorted(ranks)
-            if self.is5Consecutive(uniq):
-                return True
-        return False
-        
+         for suit, ranks in by_suit.items():
+                 if royal.issubset(ranks):
+                          
+                          return True
+         return False
+                 
+                 
+                  i
+                     
+                     
+                
+            
 
         
 
